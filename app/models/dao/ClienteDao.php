@@ -28,4 +28,9 @@ class ClienteDao extends Model
     {
         return $this->edit($this->db, $cliente, "id_cliente");
     }
+
+    public function excluir($id_cliente)
+    {
+        return $this->del($this->db, "id_cliente", $id_cliente);
+    }
 }

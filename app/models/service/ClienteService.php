@@ -51,5 +51,17 @@ class ClienteService
         return $resultado;
     }
 
+    public static function excluir($id_cliente)
+    {
+        $dao = new ClienteDao();
+        $excluir =$dao->excluir($id_cliente);
+
+        if($excluir){
+            Flash::setMsg("Registro EXCLUÍDO com Sucesso!");
+        }else{
+            Flash::setMsg("Registro  NÃO EXCLUÍDO!", -1);
+        }
+    }
+
     
 }

@@ -54,12 +54,13 @@ class ClienteController extends Controller{
         }else{
             $this->redirect(URL_BASE . "cliente/create");
         }
-        
-
-
     }
     
-    public function excluir($id){
+    public function excluir($id_cliente)
+    {
+        ClienteService::excluir($id_cliente);
+        
+        $this->redirect(URL_BASE . "cliente/index");
     }
 }
 
