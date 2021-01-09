@@ -10,4 +10,19 @@ class Dao extends Model
     {
         return $this->all($this->db, $tabela);
     }
+
+    public function get($tabela, $campo, $valor)
+    {
+        return $this->find($this->db, $tabela, $campo, $valor);
+    }
+
+    public function inserir($dados, $tabela)
+    {
+        return $this->add($this->db, $dados, $tabela);
+    }
+
+    public function editar($dados, $campo, $tabela)
+    {
+        return $this->edit($this->db, $dados, $campo, $tabela);
+    }
 }
