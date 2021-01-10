@@ -13,10 +13,22 @@ class Service
         return $dao->lista($tabela);
     }
 
-    public static function get($tabela, $campo, $valor)
+    public static function get($tabela, $campo, $valor, $eh_lista=false)
     {
         $dao = new Dao();
-        return $dao->get($tabela, $campo, $valor);
+        return $dao->get($tabela, $campo, $valor, $eh_lista);
+    }
+
+    public static function getLike($tabela, $campo, $valor, $eh_lista=false, $posicao=null)
+    {
+        $dao = new Dao();
+        return $dao->getLike($tabela, $campo, $valor, $eh_lista, $posicao);
+    }
+
+    public static function getGeral($tabela, $campo, $operador, $valor, $eh_lista=false)
+    {
+        $dao = new Dao();
+        return $dao->getGeral($tabela, $campo, $operador, $valor, $eh_lista);
     }
 
     public static function salvar($objeto, $campo, $erros=[], $tabela)

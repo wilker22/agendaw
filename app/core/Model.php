@@ -79,6 +79,56 @@ abstract class Model{
              throw new \Exception($e->getMessage());
          }
      }
+
+      //Retorna uma consulta por um campo
+      function findLike($conn, $campo, $valor, $tabela=null, $isLista=false, $posicao=null){
+        $tabela = ($tabela) ? $tabela: $this->tabela;
+        try {
+            $sql = "SELECT * FROM ". $tabela . " WHERE " . $campo . " LIKE :campo " ;
+            $stmt = $conn->prepare($sql);
+            
+            if(!$posicao){
+                $stmt->bindValue(":campo", "%" . $valor . "%");
+            }else {
+                if($posicao == 1){
+                    $stmt->bindValue(":campo", $valor . "%");
+                }else{
+                    $stmt->bindValue(":campo", "%" . $valor);
+                }
+            }
+
+            $stmt->execute();
+            if($isLista){
+                return $stmt->fetchAll(\PDO::FETCH_OBJ);
+            }else{
+                return $stmt->fetch(\PDO::FETCH_OBJ);
+            }
+            
+        }catch (\PDOException $e){
+            throw new \Exception($e->getMessage());
+        }
+    }
+
+      //Retorna uma consulta por um campo
+      function findGeral($conn, $campo,$operador, $valor, $tabela=null, $isLista=false ){
+        $tabela = ($tabela) ? $tabela: $this->tabela;
+        try {
+            $sql = "SELECT * FROM ". $tabela . " WHERE " . $campo . $operador . " :campo " ;
+            $stmt = $conn->prepare($sql);
+            $stmt->bindValue(":campo", $valor);
+            $stmt->execute();
+            if($isLista){
+                return $stmt->fetchAll(\PDO::FETCH_OBJ);
+            }else{
+                return $stmt->fetch(\PDO::FETCH_OBJ);
+            }
+            
+        }catch (\PDOException $e){
+            throw new \Exception($e->getMessage());
+        }
+    }
+
+    
      
      
      function add($conn, $dados, $tabela=null ){ 
