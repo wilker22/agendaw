@@ -80,6 +80,54 @@ abstract class Model{
          }
      }
 
+     //Retorna uma consulta por um campo
+     function findEntre($conn, $campo, $valor1, $valor2, $tabela=null){
+        $tabela = ($tabela) ? $tabela: $this->tabela;
+        try {
+            $sql = "SELECT * FROM ". $tabela . " WHERE " . $campo . " BETWEEN :valor1 AND :valor2 " ;
+            $stmt = $conn->prepare($sql);
+            $stmt->bindValue(":valor1", $valor1);
+            $stmt->bindValue(":valor2", $valor2);
+            $stmt->execute();
+            return $stmt->fetchAll(\PDO::FETCH_OBJ);
+           
+            
+        }catch (\PDOException $e){
+            throw new \Exception($e->getMessage());
+        }
+    }
+
+     //Retorna uma consulta por um campo
+     function findAgrega($conn, $tipo, $campoAgregacao, $tabela=null, $campo=null, $valor=null){
+        $tabela = ($tabela) ? $tabela: $this->tabela;
+        try {
+            if($campo != null && $valor != null){
+                $condicao = "WHERE " . $campo . "=:campo";
+            }else{
+                $condicao = "";
+            }
+
+            if($tipo == "soma"){
+                $sql = "SELECT sum($campoAgregacao) as soma FROM ". $tabela . $condicao;
+            }else if ($tipo == "total"){
+                $sql = "SELECT count($campoAgregacao) as total FROM ". $tabela . $condicao ;
+            }else if ($tipo == "media"){
+                $sql = "SELECT avg($campoAgregacao) as media FROM ". $tabela . $condicao ;
+            }else if ($tipo == "max"){
+                $sql = "SELECT max($campoAgregacao) as max FROM ". $tabela . $condicao ;
+            }else if ($tipo == "min"){
+                $sql = "SELECT min($campoAgregacao) as min FROM ". $tabela . $condicao ;
+            }
+            
+            $stmt = $conn->prepare($sql);
+            $stmt->bindValue(":campo", $valor);
+            $stmt->execute();
+            return $stmt->fetch(\PDO::FETCH_OBJ);
+        } catch (\PDOException $e){
+            throw new \Exception($e->getMessage());
+        }
+    }
+
       //Retorna uma consulta por um campo
       function findLike($conn, $campo, $valor, $tabela=null, $isLista=false, $posicao=null){
         $tabela = ($tabela) ? $tabela: $this->tabela;

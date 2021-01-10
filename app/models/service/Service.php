@@ -19,6 +19,43 @@ class Service
         return $dao->get($tabela, $campo, $valor, $eh_lista);
     }
 
+    public static function getEntre($tabela, $campo, $valor1, $valor2)
+    {
+        $dao = new Dao();
+        return $dao->getEntre($tabela, $campo, $valor1, $valor2);
+    }
+
+
+    public static function getTotal($tabela, $campoAgregacao, $campo=null, $valor=null)
+    {
+        $dao = new Dao();
+        return $dao->getTotal($tabela, $campoAgregacao, $campo, $valor);
+    }
+
+    public static function getSoma($tabela, $campoAgregacao, $campo=null, $valor=null)
+    {
+        $dao = new Dao();
+        return $dao->getSoma($tabela, $campoAgregacao, $campo, $valor);
+    }
+
+    public static function getMedia($tabela, $campoAgregacao, $campo=null, $valor=null)
+    {
+        $dao = new Dao();
+        return $dao->getMedia($tabela, $campoAgregacao, $campo, $valor);
+    }
+
+    public static function getMaximo($tabela, $campoAgregacao, $campo=null, $valor=null)
+    {
+        $dao = new Dao();
+        return $dao->getMaximo($tabela, $campoAgregacao, $campo, $valor);
+    }
+
+    public static function getMinimo($tabela, $campoAgregacao, $campo=null, $valor=null)
+    {
+        $dao = new Dao();
+        return $dao->getMinimo($tabela, $campoAgregacao, $campo, $valor);
+    }
+    
     public static function getLike($tabela, $campo, $valor, $eh_lista=false, $posicao=null)
     {
         $dao = new Dao();
