@@ -46,6 +46,6 @@
 </style>
 
 <div>
-	<span class="msg <?php echo $msg->classe?>"><i class="fas <?php echo $msg->icone?>"></i> <?php echo $msg->msg?><a href="" class="fas fa-times float-right"></a></span>
+	<span class="msg <?php echo $msg->classe?>"><i class="fas <?php echo $msg->icone?>"></i> <?php echo $msg->msg?><a href="javascript:;" onclick="fecharMsg()" class="fas fa-times float-right"></a></span>
 
 </div>

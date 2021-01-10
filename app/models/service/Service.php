@@ -1,125 +1,97 @@
 <?php
-
 namespace app\models\service;
-
 use app\core\Flash;
 use app\models\dao\Dao;
 
-class Service 
-{
-    public static function lista($tabela)
-    {
+class Service{       
+    public static function lista($tabela){
         $dao = new Dao();
         return $dao->lista($tabela);
-    }
-
-    public static function get($tabela, $campo, $valor, $eh_lista=false)
-    {
+    }    
+    public static  function get($tabela, $campo, $valor,$eh_lista=false){
         $dao = new Dao();
-        return $dao->get($tabela, $campo, $valor, $eh_lista);
-    }
-
-    public static function getEntre($tabela, $campo, $valor1, $valor2)
-    {
+        return  $dao->get($tabela, $campo, $valor,$eh_lista);
+    }  
+    public static  function getEntre($tabela, $campo, $valor1, $valor2){
         $dao = new Dao();
-        return $dao->getEntre($tabela, $campo, $valor1, $valor2);
-    }
-
-
-    public static function getTotal($tabela, $campoAgregacao, $campo=null, $valor=null)
-    {
+        return  $dao->getEntre($tabela, $campo, $valor1, $valor2);
+    } 
+    public static  function getGeral($tabela, $campo,$operador, $valor,$eh_lista=false){
         $dao = new Dao();
-        return $dao->getTotal($tabela, $campoAgregacao, $campo, $valor);
-    }
-
-    public static function getSoma($tabela, $campoAgregacao, $campo=null, $valor=null)
-    {
+        return  $dao->getGeral($tabela, $campo, $operador, $valor,$eh_lista);
+    }    
+    
+    public static  function getLike($tabela, $campo, $valor,$eh_lista=false, $posicao=null){
         $dao = new Dao();
-        return $dao->getSoma($tabela, $campoAgregacao, $campo, $valor);
-    }
-
-    public static function getMedia($tabela, $campoAgregacao, $campo=null, $valor=null)
-    {
+        return  $dao->getLike($tabela, $campo, $valor,$eh_lista, $posicao);
+    } 
+    
+    public static  function getTotal($tabela, $campAgregacao, $campo=null,  $valor=null){
         $dao = new Dao();
-        return $dao->getMedia($tabela, $campoAgregacao, $campo, $valor);
-    }
-
-    public static function getMaximo($tabela, $campoAgregacao, $campo=null, $valor=null)
-    {
-        $dao = new Dao();
-        return $dao->getMaximo($tabela, $campoAgregacao, $campo, $valor);
-    }
-
-    public static function getMinimo($tabela, $campoAgregacao, $campo=null, $valor=null)
-    {
-        $dao = new Dao();
-        return $dao->getMinimo($tabela, $campoAgregacao, $campo, $valor);
+        return  $dao->getTotal($tabela,  $campAgregacao, $campo,  $valor);
     }
     
-    public static function getLike($tabela, $campo, $valor, $eh_lista=false, $posicao=null)
-    {
+    public static  function getSoma($tabela, $campAgregacao, $campo=null,  $valor=null){
         $dao = new Dao();
-        return $dao->getLike($tabela, $campo, $valor, $eh_lista, $posicao);
+        return  $dao->getSoma($tabela, $campAgregacao, $campo,  $valor);
     }
-
-    public static function getGeral($tabela, $campo, $operador, $valor, $eh_lista=false)
-    {
+    
+    public static  function getMinimo($tabela, $campAgregacao, $campo=null,  $valor=null){
         $dao = new Dao();
-        return $dao->getGeral($tabela, $campo, $operador, $valor, $eh_lista);
+        return  $dao->getMinimo($tabela,  $campAgregacao, $campo,  $valor);
     }
-
-    public static function salvar($objeto, $campo, $erros=[], $tabela)
-    {
+    
+    public static  function getMaximo($tabela, $campAgregacao, $campo=null,  $valor=null){
+        $dao = new Dao();
+        return  $dao->getMaximo($tabela,  $campAgregacao, $campo,  $valor);
+    }
+    public static  function getMedia($tabela, $campAgregacao, $campo=null,  $valor=null){
+        $dao = new Dao();
+        return  $dao->getMedia($tabela,  $campAgregacao, $campo,  $valor);
+    }
+    
+    public static function salvar($objeto, $campo, array $erros, $tabela){
         $resultado = false;
-        
         if(!$erros){
-            $dao = new Dao();
- 
+            $dao = new Dao();            
             if($objeto->$campo){
-                $resultado = $dao->editar(objToArray($objeto), $campo, $tabela);
+                $resultado =  $dao->editar(objToArray($objeto),$campo, $tabela);                
                 if($resultado){
-                    Flash::setMsg("Registro ALTERADO com Sucesso!");
+                    Flash::setMsg("Registro Alterado com sucesso",1);
                 }else{
-                    Flash::setMsg("Registro  NÃO Alterado!", -1);
-                } 
+                    Flash::setMsg("Nenhum Registro foi alterado", -1) ;
+                }
             }else{
-                $resultado = $dao->inserir(objToArray($objeto), $tabela);
+                $resultado =  $dao->inserir(objToArray($objeto), $tabela);
                 if($resultado){
-                    Flash::setMsg("Registro INSERIDO com Sucesso!");
+                    Flash::setMsg("Registro inserido com sucesso",1);
                 }else{
-                    Flash::setMsg("Registro  NÃO inserido!", -1);
+                    Flash::setMsg("Não foi Possível Inserir os dados", -1) ;
                 }
             }
             Flash::limpaForm();
-             
+            return $resultado;
         }else{
             Flash::limpaErro();
             Flash::setErro($erros);
         }
-        return $resultado;
+        return false;
     }
-
-    public static function inserir ($dados, $tabela)
-    {
+    
+    public static function inserir($dados, $tabela){
         $dao = new Dao();
         return  $dao->inserir($dados, $tabela);
     }
-
-    public static function editar($dados, $campo, $tabela)
-    {
+    
+    public static function editar($dados, $campo, $tabela){
         $dao = new Dao();
-        return  $dao->inserir($dados, $campo, $tabela);
+        return  $dao->editar($dados, $campo, $tabela);
     }
-
-    public static function excluir($tabela, $campo, $valor)
-    {
+    
+    public static function excluir($tabela, $campo, $valor){
         $dao = new Dao();
-        $excluir =$dao->excluir($tabela, $campo, $valor);
-
-        if($excluir){
-            Flash::setMsg("Registro EXCLUÍDO com Sucesso!");
-        }else{
-            Flash::setMsg("Registro  NÃO EXCLUÍDO!", -1);
-        }
+        return  $dao->excluir($tabela, $campo, $valor);
     }
+   
 }
+

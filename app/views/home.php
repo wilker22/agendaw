@@ -1,5 +1,4 @@
-<div class="conteudo">
-			<section class="caixa">
+<section class="caixa">
 				<div class="thead"><i class="ico home"></i> Home</div>
 				<div class="base-home">
 					<h2 class="titulo">SEJA BEM VINDO!</h2>
@@ -59,4 +58,3 @@
 					
 				</div>
 			</section>
-		</div>

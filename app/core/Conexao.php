@@ -11,7 +11,6 @@ class Conexao{
         try{
             if(!self::$conexao){
                 self::$conexao = new \PDO("mysql:dbname=".BANCO.";host=".SERVIDOR,USUARIO,SENHA);
-                self::$conexao->setAttribute(\PDO::ATTR_EMULATE_PREPARES, false);
                 self::$conexao->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
                 self::$conexao->exec("SET NAMES " . CHARSET);
             }

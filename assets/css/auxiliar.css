@@ -184,45 +184,45 @@
     text-align: center;
     text-transform: uppercase;
     text-decoration: none;
-    background:#41d07b;
+    background:#41d07b!important;
 	transition:all .4s;
-	font-size: .9rem;
+	font-size: .9rem!important;
 }
 .btn:hover{
-	box-shadow:0 0 8px 0 #0000005c;
+	box-shadow:0 0 8px 0 #0000005c!important;
 	transition:all .2s;
 	cursor:pointer;
 }
 
 .btn.btn-vermelho{
-    border: solid 1px #FF7373;
-    background: #FF7373;
+    border: solid 1px #FF7373!important;
+    background: #FF7373!important;
 }
 .btn.btn-amarelo{
-    border: solid 1px #fbd461;
-    background: #fbd461;
+    border: solid 1px #fbd461!important;
+    background: #fbd461!important;
 	color:#000!important
 }
 .btn.btn-laranja{
-   border: solid 1px #FF9800;
-    background: #ff9800;
+   border: solid 1px #FF9800!important;
+    background: #ff9800!important;
 	color:#000!important
 }
 .btn-roxo{
-	background:#7892ea;
-	border: solid 1px #7892ea;
+	background:#7892ea!important;
+	border: solid 1px #7892ea!important;
 }
 .btn-verde{
-	background:#46b76f;
-	border: solid 1px #46b76f;
+	background:#46b76f!important;
+	border: solid 1px #46b76f!important;
 }
 .btn-azul{
-	background:#0c8dde;
-	border: solid 1px #0c8dde;
+	background:#0c8dde!important;
+	border: solid 1px #0c8dde!important;
 }
 .btn-nulo{
-	background:#b3b3b3;
-	border: solid 1px #b3b3b3;
+	background:#b3b3b3!important;
+	border: solid 1px #b3b3b3!important;
 	color:#7f7f7f
 }
 
@@ -527,29 +527,44 @@ border-radius:0;
     border-color: #48afef;
 }
 
-/*mensagens de alerta*/
+
+
 .msg{
-	position: relative;
-    padding: .8rem 1.25rem;
-    margin-bottom: 1rem;
-    border: 1px solid transparent;
-    border-radius: .25rem;
+	display: block;
+    background: #de6d6d;
+    border-radius: 5px;
+    padding: 10px;
+    border: solid 1px #d74e4e;
+    color: #7f2e2e;
+    font-weight: 600;
+	margin-bottom:15px
+	}
+	
+.msg.sucesso{
+	background:rgba(0, 128, 0, 0.35);
+    border-color: #669866;
+    color: #4d754d;
 }
-.msg a{
-	text-decoration:none
+.msg.sucesso .fa-times{
+    color: #4d754d;text-decoration:none;
+}	
+.msg.erro{
+	background: #e69f9f;
+    border-color: #967272;
+    color: #9a4848;
 }
-.msg.msg-vermelho a{
-    color:#a54242;
+.msg.erro .fa-times{
+    color: #9a4848;text-decoration:none;
 }
-.msg.msg-verde a{
-    color:#2e634d;
+.msg.info{
+	background: #aed8e6;
+    border-color: #5899af;
+    color: #5594a9;
 }
-.msg.msg-amarelo a{
-    color:#c77226;
-}
-.msg.msg-azul a{
-    color:#206a98;
-}
+.msg.info .fa-times{
+    color: #5594a9;text-decoration:none;
+}	
+
 .msg ul,
 .msg ol
 {

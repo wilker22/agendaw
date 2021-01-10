@@ -16,7 +16,7 @@ define("TITULO_SITE","mjailton-ligando vc ao mundo do conhecimento");
 define('URL_BASE', 'http://' . $_SERVER["HTTP_HOST"].'/agenda/');
 define('URL_IMAGEM', "http://". $_SERVER['HTTP_HOST'] . "/estrutura_mvc/UP/");
 
-define("SESSION_LOGIN","usuario_logado");
+define("SESSION_LOGIN","usuario_agenda_logado");
 
 $config_upload["verifica_extensao"] = false;
 $config_upload["extensoes"]         = array(".gif",".jpeg", ".png", ".bmp", ".jpg");

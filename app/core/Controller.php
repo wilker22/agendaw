@@ -19,7 +19,7 @@ class Controller{
    
    public function verErro($view=null){
        $view = ($view) ? $view : "inc/erros";
-       $erros = Flash::getErro();      
+       $erros = Flash::getErro();
        if($erros){
            include "app/views/".$view .".php";
        }

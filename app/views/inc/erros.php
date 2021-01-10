@@ -47,6 +47,6 @@
 
 <div>
 <?php foreach($erros as $erro){?>
-	<span class="msg erro"><i class="fas fa-exclamation-triangle"></i> <?php echo $erro ?><a href="" class="fas fa-times float-right"></a></span>
+	<span class="msg erro"><i class="fas fa-exclamation-triangle"></i> <?php echo $erro ?><a href="javascript:;" onclick="fecharMsg()" class="fas fa-times float-right"></a></span>
 <?php } ?>
 </div>

@@ -11,7 +11,7 @@ body{font-family:arial, 'sans-serif'; font-size:1em; background:#e2e2e2}
 	a{text-decoration:none;}
 	a:hover{text-decoration:underline;}
 
-.mostrasenha{
+.mostraCampo{
 	position: absolute;
     top: 0;
     bottom: 0;
@@ -21,7 +21,7 @@ body{font-family:arial, 'sans-serif'; font-size:1em; background:#e2e2e2}
 	left: 0;
     right: 0;
 }
-.mostrasenha .caixa{
+.mostraCampo .caixa{
 	border:0;
 	padding:1rem 2rem
 }
@@ -290,6 +290,7 @@ body.base-login .caixa label
 	padding:15px 20px;
 	border:solid 1px #3333335e;
 	margin-bottom:15px;
+	display:none
 }
 
 .base-lista .lst select,
@@ -304,7 +305,7 @@ body.base-login .caixa label
 	padding:9px;
 }
 .base-lista .lst input[type=submit]{
-	background:#eb5cee;
+	background:#eb5cee!important;
 	text-transform:uppercase;
 }
 .base-lista .lst input[type=submit]:hover{

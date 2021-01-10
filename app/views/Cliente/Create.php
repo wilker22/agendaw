@@ -1,18 +1,16 @@
-<div class="conteudo">
-			<section class="caixa">
+<section class="caixa">
 				<div class="thead"><i class="ico cad"></i>Formulario de cadastro</div>
 				<div class="base-form">
 					<div class="caixa-form">
 						<div class="thead">Inserir novo cadastro</div>
-						<form action="<?php echo URL_BASE ."cliente/salvar" ?>" method="POST">
-							<?php 
-							     $this->verErro();
-							     $this->verMsg();
-							     ?>	
-							
+						<form action="<?php echo URL_BASE ."cliente/salvar"?>" method="POST">
+						<?php 
+						      $this->verMsg();
+						      $this->verErro();
+						?>					
 							<div class="rows">
 							  <div class="col-3 position-relative">									
-									<img src="<?php echo URL_BASE ?>assets/img/img-usuario.png" class="img-fluido foto" id="foto">
+									<img src="<?php echo URL_BASE ?>assets/img/img-usuario.png" class="img-fluido foto">
 									<div  class="foto-file">
 										<input type="file" id="editarFoto"><label for="editarFoto"><span>Editar foto</span></label>
 									</div>
@@ -20,7 +18,6 @@
 								
 								<div class="col-9">
 								<div class="rows">
-										<input type="hidden" name="id_cliente" value="<?php echo isset($cliente->id_cliente) ? $cliente->id_cliente : "" ?>" />
 									<div class="col-12">
 										<label>Nome</label>
 										<input name="cliente" value="<?php echo isset($cliente->cliente) ? $cliente->cliente : null ?>" type="text" placeholder="Insira um nome" class="form-campo">
@@ -48,21 +45,17 @@
 									<label>Bairro</label>
 									<input name="bairro" value="<?php echo isset($cliente->bairro) ? $cliente->bairro : null ?>" type="text" placeholder="Insira seu bairro" class="form-campo">
 								</div>
-								<div class="col-4">
+								<div class="col-6">
 									<label>Cidade</label>
 									<input name="cidade" value="<?php echo isset($cliente->cidade) ? $cliente->cidade : null ?>" type="text" placeholder="Insira sua cidade" class="form-campo">	
 								</div>	
 							
-								<div class="col-4">
+								<div class="col-3">
 									<label>UF</label>
-									<input name="uf" value="<?php echo isset($cliente->uf) ? $cliente->uf : null ?>" type="text" placeholder="Insira seu celular" class="form-campo">
+									<input name="uf" value="<?php echo isset($cliente->uf) ? $cliente->uf : null ?>" type="text" placeholder="Insira sua cidade" class="form-campo">	
 								</div>								
-								
-								<div class="col-4">
-									<label>DDD</label>
-									<input name="ddd" value="<?php echo isset($cliente->ddd) ? $cliente->ddd : null ?>" type="text" placeholder="Insira o DDD" class="form-campo">
-								</div>
-								<div class="col-4">
+													
+								<div class="col-3">
 									<label>Celular</label>
 									<input name="celular" value="<?php echo isset($cliente->celular) ? $cliente->celular : null ?>" type="text" placeholder="Insira seu celular" class="form-campo">
 								</div>
@@ -72,33 +65,35 @@
 								</div>
 								<div class="col-4">
 									<label>Sexo</label>
+									<?php $sexo = isset($cliente->sexo) ? $cliente->cpf : null ?>
 									<select class="form-campo" name="sexo">
-										<option>Masculino</option>
-										<option>Feminino</option>
+										<option value="M" <?php echo ($sexo=="M") ? "selected" : "" ?>>Masculino</option>
+										<option value="F" <?php echo ($sexo=="F") ? "selected" : "" ?>>Feminino</option>
 									</select>
 								</div>
+								
 								<div class="col-4">
 									<label>Data de cadastro</label>
 									<input name="data_cadastro" value="<?php echo isset($cliente->data_cadastro) ? $cliente->data_cadastro : null ?>" type="date" placeholder="Insira sua data" class="form-campo">
 								</div>
 							
 							
-								<div class="col-6">
+								<div class="col-8">
 									<label>Email</label>
 									<input name="email" value="<?php echo isset($cliente->email) ? $cliente->email : null ?>" type="text" placeholder="Insira um email" class="form-campo">
 								</div>
-								<div class="col-6">
-									<label>Senha</label>
+								<div class="col-4">
+									<label>senha</label>
 									<input name="senha" value="<?php echo isset($cliente->senha) ? $cliente->senha : null ?>" type="password" placeholder="Insira seu Site" class="form-campo">
 								</div>
 								<div class="col-12">
 									<label>Observação</label>
 									<textarea rows="10" name="observacao" class="form-campo"><?php echo isset($cliente->observacao) ? $cliente->observacao : null ?></textarea>
 								</div>
-								
+								<input type="hidden" name="id_cliente" value="<?php echo isset($cliente->id_cliente) ? $cliente->id_cliente : null ?>" />
 								<input type="submit" value="Cadastrar" class="btn">
 						</form>
 					</div>
 				</div>
-				</div>
-				</div>
+				
+				</section>
