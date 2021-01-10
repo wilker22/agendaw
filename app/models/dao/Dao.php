@@ -13,7 +13,7 @@ class Dao extends Model
 
     public function get($tabela, $campo, $valor)
     {
-        return $this->find($this->db, $tabela, $campo, $valor);
+        return $this->find($this->db, $campo, $valor, $tabela);
     }
 
     public function inserir($dados, $tabela)
@@ -25,4 +25,10 @@ class Dao extends Model
     {
         return $this->edit($this->db, $dados, $campo, $tabela);
     }
+
+    public function excluir ($tabela, $campo, $valor)
+    {
+        return $this->del($this->db, $campo, $valor, $tabela);
+    }
+
 }

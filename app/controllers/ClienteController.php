@@ -4,10 +4,15 @@ namespace app\controllers;
 use app\core\Controller;
 use app\core\Flash;
 use app\models\service\ClienteService;
+use app\models\service\Service;
 
 class ClienteController extends Controller{
+
+    private $tabela = "cliente";
+    private $campo = "id_cliente";
+
     public function index(){
-       $dados["lista"] = ClienteService::lista();
+       $dados["lista"] = Service::lista($this->tabela);
        $dados["view"] = "Cliente/Index";
        $this->load("template", $dados);
     }
@@ -18,8 +23,8 @@ class ClienteController extends Controller{
         $this->load("template", $dados);
     }
     
-    public function edit($id_cliente){
-        $cliente = ClienteService::getCliente($id_cliente);
+    public function edit($id){
+        $cliente = Service::get($this->tabela, $this->campo, $id);
         if(!$cliente){
             $this->redirect(URL_BASE . "cliente/index");
         }
@@ -31,7 +36,7 @@ class ClienteController extends Controller{
     public function salvar()
     {
         $cliente = new \stdClass();
-        $cliente->id_cliente        = $_POST['id_cliente'];
+      //  $cliente->id_cliente        = $_POST['id_cliente'];
         $cliente->cliente           = $_POST['cliente'];
         $cliente->endereco          = $_POST['endereco'];
         $cliente->complemento       = $_POST['complemento'];
@@ -49,17 +54,19 @@ class ClienteController extends Controller{
 
         Flash::setForm($cliente);
         
-        if(ClienteService::salvar($cliente)){
+        if(ClienteService::salvar($cliente, $this->campo, $this->tabela)){
             $this->redirect(URL_BASE . "cliente/index");
         }else{
             $this->redirect(URL_BASE . "cliente/create");
         }
     }
     
-    public function excluir($id_cliente)
+    public function excluir($id)
     {
                 
-        ClienteService::excluir($id_cliente);
+        
+        Service::excluir($this->tabela, $this->campo, $id);
+        
         
         $this->redirect(URL_BASE . "cliente/index");
     }

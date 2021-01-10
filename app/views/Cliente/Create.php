@@ -20,6 +20,7 @@
 								
 								<div class="col-9">
 								<div class="rows">
+										<input type="hidden" name="id_cliente" value="<?php echo isset($cliente->id_cliente) ? $cliente->id_cliente : "" ?>" />
 									<div class="col-12">
 										<label>Nome</label>
 										<input name="cliente" value="<?php echo isset($cliente->cliente) ? $cliente->cliente : null ?>" type="text" placeholder="Insira um nome" class="form-campo">
@@ -94,7 +95,7 @@
 									<label>Observação</label>
 									<textarea rows="10" name="observacao" class="form-campo"><?php echo isset($cliente->observacao) ? $cliente->observacao : null ?></textarea>
 								</div>
-								<input type="hidden" name="id_cliente" value="<?php echo isset($cliente->id_cliente) ? $cliente->id_cliente : null ?>" />
+								
 								<input type="submit" value="Cadastrar" class="btn">
 						</form>
 					</div>

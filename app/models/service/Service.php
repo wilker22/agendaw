@@ -25,18 +25,18 @@ class Service
         
         if(!$erros){
             $dao = new Dao();
-
-            if(isset($objeto->campo)){
+ 
+            if($objeto->$campo){
                 $resultado = $dao->editar(objToArray($objeto), $campo, $tabela);
                 if($resultado){
-                    Flash::setMsg("Registro Alterado com Sucesso!");
+                    Flash::setMsg("Registro ALTERADO com Sucesso!");
                 }else{
                     Flash::setMsg("Registro  NÃO Alterado!", -1);
-                }
+                } 
             }else{
                 $resultado = $dao->inserir(objToArray($objeto), $tabela);
                 if($resultado){
-                    Flash::setMsg("Registro inserido com Sucesso!");
+                    Flash::setMsg("Registro INSERIDO com Sucesso!");
                 }else{
                     Flash::setMsg("Registro  NÃO inserido!", -1);
                 }
@@ -48,5 +48,29 @@ class Service
             Flash::setErro($erros);
         }
         return $resultado;
+    }
+
+    public static function inserir ($dados, $tabela)
+    {
+        $dao = new Dao();
+        return  $dao->inserir($dados, $tabela);
+    }
+
+    public static function editar($dados, $campo, $tabela)
+    {
+        $dao = new Dao();
+        return  $dao->inserir($dados, $campo, $tabela);
+    }
+
+    public static function excluir($tabela, $campo, $valor)
+    {
+        $dao = new Dao();
+        $excluir =$dao->excluir($tabela, $campo, $valor);
+
+        if($excluir){
+            Flash::setMsg("Registro EXCLUÍDO com Sucesso!");
+        }else{
+            Flash::setMsg("Registro  NÃO EXCLUÍDO!", -1);
+        }
     }
 }
