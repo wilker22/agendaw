@@ -32,7 +32,7 @@
 		<script src="https://kit.fontawesome.com/9480317a2f.js"></script>
 		<script src="<?php echo URL_BASE ?>assets/js/datatables/js/jquery.dataTables.min.js"></script>
 		<script src="<?php echo URL_BASE ?>assets/js/datatables/js/dataTables.responsive.min.js"></script>
-		<script src="<?php echo URL_BASE ?>assets/js/componentes/js_data_table.js"></script>					
+		<script src="<?php echo URL_BASE ?>assets/js/componentes/js_data_tables.js"></script>					
 		<script src="<?php echo URL_BASE ?>assets/js/js.js"></script>
 		
 	</body>
