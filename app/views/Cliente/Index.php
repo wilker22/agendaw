@@ -44,77 +44,18 @@
 						  </tr>
 						</thead> 
 						<tbody>
-						
+						<?php foreach($lista as $cliente){ ?>
 							<tr>
-								<td>01</td>
-								<td>Manoel Jailton Nascimento</td>
-								<td>mjailton@gmail.com</td>
-								<td align="center">9899924667</td>
+								<td><?php echo $cliente->id_cliente ?></td>
+								<td><?php echo $cliente->cliente ?></td>
+								<td><?php echo $cliente->email ?></td>
+								<td align="center"><?php echo $cliente->celular ?></td>
 								<td align="center">
-									<a href="formulario.html" class="btn btn-verde">Editar</a>
-									<a href="formulario.html" class="btn btn-vermelho">Excluir</a>
+									<a href="<?php echo URL_BASE . "cliente/edit/" . $cliente->id_cliente?>" class="btn btn-verde">Editar</a>
+									<a href="javascript:;" onclick="excluir(this)" data-entidade="cliente" data-id="<?php echo $cliente->id_cliente ?>" class="btn btn-vermelho">Excluir</a>
 								</td>
 							</tr>
-							<tr>
-								<td>02</td>
-								<td>Manoel Jailton Nascimento</td>
-								<td>mjailton@gmail.com</td>
-								<td align="center">9899924667</td>
-								<td align="center">
-									<a href="formulario.html" class="btn btn-verde">Editar</a>
-									<a href="formulario.html" class="btn btn-vermelho">Excluir</a>
-								</td>
-							</tr>
-							<tr>
-								<td>03</td>
-								<td>Manoel Jailton Nascimento</td>
-								<td>mjailton@gmail.com</td>
-								<td align="center">9899924667</td>
-								<td align="center">
-									<a href="formulario.html" class="btn btn-verde">Editar</a>
-									<a href="formulario.html" class="btn btn-vermelho">Excluir</a>
-								</td>
-							</tr>
-							<tr>
-								<td>04</td>
-								<td>Manoel Jailton Nascimento</td>
-								<td>mjailton@gmail.com</td>
-								<td align="center">9899924667</td>
-								<td align="center">
-									<a href="formulario.html" class="btn btn-verde">Editar</a>
-									<a href="formulario.html" class="btn btn-vermelho">Excluir</a>
-								</td>
-							</tr>
-							<tr>
-								<td>05</td>
-								<td>Manoel Jailton Nascimento</td>
-								<td>mjailton@gmail.com</td>
-								<td align="center">9899924667</td>
-								<td align="center">
-									<a href="formulario.html" class="btn btn-verde">Editar</a>
-									<a href="formulario.html" class="btn btn-vermelho">Excluir</a>
-								</td>
-							</tr>
-							<tr>
-								<td>06</td>
-								<td>Manoel Jailton Nascimento</td>
-								<td>mjailton@gmail.com</td>
-								<td align="center">9899924667</td>
-								<td align="center">
-									<a href="formulario.html" class="btn btn-verde">Editar</a>
-									<a href="formulario.html" class="btn btn-vermelho">Excluir</a>
-								</td>
-							</tr>
-							<tr>
-								<td>06</td>
-								<td>Manoel Jailton Nascimento</td>
-								<td>mjailton@gmail.com</td>
-								<td align="center">9899924667</td>
-								<td align="center">
-									<a href="formulario.html" class="btn btn-verde">Editar</a>
-									<a href="formulario.html" class="btn btn-vermelho">Excluir</a>
-								</td>
-							</tr>
+						<?php } ?>
 											
 						</tbody>
 					 

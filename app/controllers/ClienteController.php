@@ -7,8 +7,12 @@ use app\core\Flash;
 use app\models\service\ClienteService;
 
 class ClienteController extends Controller{
+
+    private $tabela = "cliente";
+    private $campo = "id_cliente";
    
     public function index(){
+       $dados["lista"] = Service::lista($this->tabela);
        $dados["view"]  = "Cliente/Index";
        $this->load("template", $dados);
     }
