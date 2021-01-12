@@ -92,6 +92,24 @@ class Service{
         $dao = new Dao();
         return  $dao->excluir($tabela, $campo, $valor);
     }
+
+    public static function logar($campo, $valor, $senha, $tabela)
+    {
+        $dao = new Dao();
+        Flash::limpaForm();
+        Flash::limpaMsg();
+        $resultado = $dao->get($tabela, $campo, $valor);
+
+        if($resultado) {
+            if($resultado->senha == $senha){
+                $_SESSION[SESSION_LOGIN] = $resultado;
+                return true;
+            }
+        }
+        Flash::setMsg("Login ou senha não encontrados", -1);
+        unset($_SESSION[SESSION_LOGIN]);
+        return false;
+    }
    
 }
 

@@ -20,15 +20,17 @@
 			<img src="<?php echo URL_BASE ?>assets/img/logo.png" class="m-auto d-block">
 			
 			<div class="py-1">
-				<?php $this->incluir("inc/msg") ?>
-				<?php $this->incluir("inc/erros")?>
+						<?php 
+						      $this->verMsg();
+						      $this->verErro();
+						?>	
 			</div>
 			
 				<form action="<?php echo URL_BASE ."login/logar"?>" method="post">						
 						<h1 class="text-center mt-2">login </h1>			
 						<label class="mb-2 d-block">
 							<span class="d-block text-label">Login</span>
-							<input type="text" value="" name="email" class="form-campo">
+							<input type="text" value="" name="login" class="form-campo">
 						</label>				
 						<label class="mb-2 d-block">
 							<span class="d-block text-label">Senha</span>

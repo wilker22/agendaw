@@ -1,7 +1,7 @@
 <section class="caixa">
 				<div class="thead"><i class="ico home"></i> Home</div>
 				<div class="base-home">
-					<h2 class="titulo">SEJA BEM VINDO!</h2>
+					<h2 class="titulo">SEJA BEM VINDO <?php echo $_SESSION[SESSION_LOGIN]->usuario ?>!</h2>
 					<div class="grade">
 					<div class="rows">
 						<div class="col-6">

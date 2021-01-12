@@ -7,7 +7,7 @@ class Dao extends Model{
         return  $this->all($this->db, $tabela);
     }    
     
-    public function get($tabela, $campo, $valor, $eh_lista){
+    public function get($tabela, $campo, $valor, $eh_lista=null){
         return  $this->find($this->db,$campo, $valor, $tabela, $eh_lista);
     }    
     public function getGeral($tabela, $campo, $operador, $valor, $eh_lista){

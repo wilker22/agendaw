@@ -16,5 +16,14 @@ class UtilService{
         }
         
     }
+
+    public static function getUsuario()
+    {
+        $usuario = null;
+        if(isset($_SESSION[SESSION_LOGIN])){
+            $usuario = $_SESSION[SESSION_LOGIN];
+        }
+        return $usuario;
+    }
 }
 

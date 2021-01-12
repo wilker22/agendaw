@@ -5,11 +5,23 @@ use app\core\Controller;
 use app\models\service\Service;
 use app\core\Flash;
 use app\models\service\ClienteService;
+use app\util\UtilService;
 
 class ClienteController extends Controller{
 
     private $tabela = "cliente";
     private $campo = "id_cliente";
+
+    public function __construct()
+   {
+      $this->usuario = UtilService::getUsuario();
+      if(!$this->usuario){
+         //$this->redirect(URL_BASE ."login");
+        // exit;
+        
+      }
+      i($this->usuario);
+   }
    
     public function index(){
        $dados["lista"] = Service::lista($this->tabela);
