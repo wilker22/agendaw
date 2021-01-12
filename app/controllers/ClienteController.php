@@ -16,11 +16,11 @@ class ClienteController extends Controller{
    {
       $this->usuario = UtilService::getUsuario();
       if(!$this->usuario){
-         //$this->redirect(URL_BASE ."login");
-        // exit;
+         $this->redirect(URL_BASE ."login");
+         exit;
         
       }
-      i($this->usuario);
+      
    }
    
     public function index(){

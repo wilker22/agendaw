@@ -111,7 +111,7 @@ function validaEmail($email){
      $arquivo_temporario = $_FILES[$arq]["tmp_name"];
      $erro               = 0;
      $msg                = "";
-     $retorno            = array();
+     $retorno            = [];
      if(!empty($nome_arquivo)){
          $ext        = strrchr($nome_arquivo, ".");
          $nome_final = ($config_upload["renomeia"]) ? md5(time()) . $ext:  $nome_arquivo;
@@ -127,7 +127,7 @@ function validaEmail($email){
              $erro = -1;
          }
          
-         if(($config_upload["verifica_extensao"]) && (!in_array($ext,$config_upload["extensoes"]))){
+         if(($config_upload["verifica_extensao"]) && (!in_array($ext, $config_upload))){
              $msg ="O arquivo não é permitido para upload";
              $erro = -1;
          }

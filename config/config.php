@@ -14,7 +14,7 @@ define('CAMINHO'            , realpath('./'));
 define("TITULO_SITE","WTech - Consultoria em TI");
 
 define('URL_BASE', 'http://' . $_SERVER["HTTP_HOST"].'/agenda/');
-define('URL_IMAGEM', "http://". $_SERVER['HTTP_HOST'] . "/estrutura_mvc/UP/");
+define('URL_IMAGEM', "http://". $_SERVER['HTTP_HOST'] . "/agenda/fotos/");
 
 define("SESSION_LOGIN","usuario_agenda_logado");
 
@@ -22,5 +22,5 @@ $config_upload["verifica_extensao"] = false;
 $config_upload["extensoes"]         = array(".gif",".jpeg", ".png", ".bmp", ".jpg");
 $config_upload["verifica_tamanho"]  = true;
 $config_upload["tamanho"]           = 3097152;
-$config_upload["caminho_absoluto"]  = realpath('./'). '/';
+$config_upload["caminho_absoluto"]  = realpath('./'). '/fotos/'; 
 $config_upload["renomeia"]          = true;

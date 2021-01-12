@@ -1,18 +1,21 @@
+
 <section class="caixa">
 				<div class="thead"><i class="ico cad"></i>Formulario de cadastro</div>
 				<div class="base-form">
 					<div class="caixa-form">
 						<div class="thead">Inserir novo cadastro</div>
-						<form action="<?php echo URL_BASE ."cliente/salvar"?>" method="POST">
+						<form action="<?php echo URL_BASE ."cliente/salvar"?>" method="POST" enctype="multipart/form-data">
 						<?php 
 						      $this->verMsg();
 						      $this->verErro();
 						?>					
 							<div class="rows">
-							  <div class="col-3 position-relative">									
-									<img src="<?php echo URL_BASE ?>assets/img/img-usuario.png" class="img-fluido foto">
+							  <div class="col-3 position-relative">
+								  <?php $imagem = isset($cliente->foto) ? "Array".$cliente->foto : "img-usuario.png"; ?>									
+									<img src="<?php echo URL_IMAGEM . $imagem ?>" class="img-fluido foto" id="imgUp">
 									<div  class="foto-file">
-										<input type="file" id="editarFoto"><label for="editarFoto"><span>Editar foto</span></label>
+										<input type="file" id="arquivo" name="arquivo" onchange="pegaArquivo(this.files)">
+										<label for="arquivo"><span>Editar foto</span></label>
 									</div>
 								</div>
 								
