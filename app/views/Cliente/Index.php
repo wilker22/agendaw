@@ -9,21 +9,21 @@
 						</div>
 					</div>
 					<div class="lst mostraFiltro">
-						<form action="" method="">
+						<form action="<?php echo URL_BASE. "cliente/filtro" ?>" method="GET">
 						<div class="rows">
 								<div class="col-4">
-									<select name="txt_id_empresa">
+									<select name="campo">
 										<option selected>Selecione o valor...</option>
-										<option value="1">Código</option>
-										<option value="2">Nome</option>
-										<option value="3">Email</option>
-										<option value="4">Cidade</option>
-										<option value="5">Site</option>
-										<option value="6">Fone</option>
+										<option value="id_cliente">ID</option>
+										<option value="cliente">Nome</option>
+										<option value="email">Email</option>
+										<option value="cidade">Cidade</option>
+										<option value="estado">Estado</option>
+										<option value="celular">Celular</option>
 									</select>
 								</div>
 								<div class="col-6">
-									<input type="text"  name="" placeholder="Valor da pesquisar..." >
+									<input type="text"  name="valor" placeholder="Valor da pesquisar..." >
 								</div>
 								<div class="col-2">
 									<input type="submit" class="btn" value="pesquisar">
